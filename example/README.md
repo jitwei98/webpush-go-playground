@@ -18,20 +18,14 @@
         ```
         python -m http.server 8000
         ```
-1. Go to `http://localhost:8000` and copy the logged subscription from the console. Hardcode `s` in `main.go` (this should be sent to the server)
+1. Go to `http://localhost:8000` and copy the logged subscription from the console. Hardcode `subscription` in `main.go` (this should be sent to the server and stored in order to identify which subscription to push notifications to when a user receives new messages)
    - Before
         ```go
-            s := &webpush.Subscription{}
+            subscription    = ``
         ```
    - After
         ```go
-            s := &webpush.Subscription{
-                    Endpoint: "<ENDPOINT FROM CONSOLE>",
-                    Keys: webpush.Keys{
-                        Auth:   "<AUTH FROM CONSOLE>",
-                        P256dh: "<P256dh FROM CONSOLE>",
-                    },
-            }
+            subscription    = `{"endpoint":"...","expirationTime":null,"keys":{"p256dh":"...","auth":"..."}}`
         ```
 
 
